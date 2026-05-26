@@ -409,6 +409,7 @@
     background: rgba(255,255,255,0.03);
     border: 1px solid rgba(232,100,138,0.1);
     transition: all 0.3s;
+    cursor: pointer;
   }
   .hosp-item:hover { background: rgba(232,100,138,0.06); border-color: rgba(232,100,138,0.25); }
   .hosp-arrow { color: var(--pink); flex-shrink: 0; font-weight: 700; margin-top: 2px; }
@@ -637,6 +638,7 @@
     padding: 8px 0;
     border-bottom: 1px solid rgba(255,255,255,0.07);
     transition: all 0.3s;
+    cursor: pointer;
   }
   .sign-item:hover { padding-left: 6px; border-bottom-color: rgba(232,100,138,0.3); }
   .sign-number {
@@ -1027,6 +1029,36 @@
     background: rgba(200,60,100,0.04) !important;
     border-color: rgba(200,60,100,0.15) !important;
   }
+
+  /* ─── TOUCH / ACTIVE STATES (mobile tap highlight) ─── */
+  .card:active,
+  .period-card:active,
+  .principle-item:active,
+  .check-block:active,
+  .hosp-item:active,
+  .sign-item:active,
+  .contact-pill:active,
+  .cl-tab:active {
+    -webkit-tap-highlight-color: transparent;
+  }
+  .card:active { border-color: rgba(232,100,138,0.6) !important; transform: translateY(-2px); background: rgba(232,100,138,0.08) !important; }
+  .card:active::before { opacity: 1; }
+  .period-card:active { transform: translateY(-4px) !important; border-color: rgba(232,100,138,0.5) !important; box-shadow: 0 4px 20px rgba(232,100,138,0.2); }
+  .period-card:active::after { transform: scaleX(1); }
+  .period-card:active .period-num { color: rgba(232,100,138,0.25); }
+  .principle-item:active { background: rgba(232,100,138,0.09) !important; border-color: rgba(232,100,138,0.4) !important; transform: scale(0.98); }
+  .check-block:active { border-color: rgba(232,100,138,0.5) !important; background: rgba(232,100,138,0.05) !important; }
+  .hosp-item:active { background: rgba(232,100,138,0.09) !important; border-color: rgba(232,100,138,0.4) !important; }
+  .sign-item:active { padding-left: 6px; border-bottom-color: rgba(232,100,138,0.4) !important; background: rgba(232,100,138,0.04); }
+  .contact-pill:active { background: rgba(232,100,138,0.15) !important; border-color: var(--pink) !important; color: white !important; transform: scale(0.97); }
+  .cl-tab:active { background: linear-gradient(135deg, var(--pink), var(--pink-light)) !important; color: white !important; transform: scale(0.97); }
+  body.light .card:active { border-color: rgba(200,60,100,0.55) !important; background: rgba(200,60,100,0.08) !important; }
+  body.light .period-card:active { border-color: rgba(200,60,100,0.5) !important; }
+  body.light .principle-item:active { background: rgba(200,60,100,0.09) !important; border-color: rgba(200,60,100,0.4) !important; }
+  body.light .check-block:active { border-color: rgba(200,60,100,0.45) !important; }
+  body.light .hosp-item:active { background: rgba(200,60,100,0.09) !important; border-color: rgba(200,60,100,0.4) !important; }
+  body.light .sign-item:active { border-bottom-color: rgba(200,60,100,0.4) !important; }
+  body.light .contact-pill:active { background: rgba(200,60,100,0.15) !important; }
 
   @media (max-width: 900px) {
     /* ── SECTIONS ── */
