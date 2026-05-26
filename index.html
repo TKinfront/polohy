@@ -1084,7 +1084,53 @@
     .hospital-logo { padding: 12px 20px; }
     .hospital-logo .logo-name { font-size: 1.6rem !important; }
 
-    /* ── SECTION TITLES ── */
+    /* ── DEFINITION: show animation below text ── */
+    #definition { min-height: auto; }
+    .definition-grid {
+      display: flex !important;
+      flex-direction: column !important;
+      gap: 16px;
+    }
+    .definition-grid > div:first-child { order: 1; }
+    .definition-visual {
+      display: flex !important;
+      order: 2;
+      justify-content: center;
+      transform: scale(0.75);
+      margin: -30px auto -20px;
+    }
+
+    /* ── PRECURSORS: title+subtitle → photo → cards ── */
+    #precursors {
+      padding-left: 20px !important;
+      flex-direction: column !important;
+      align-items: flex-start !important;
+    }
+    #precursors-photo-side {
+      display: block !important;
+      position: relative !important;
+      top: auto; left: auto; right: auto; bottom: auto;
+      width: 100% !important;
+      height: 260px;
+      border-right: none !important;
+      border-bottom: 1px solid rgba(232,100,138,0.15);
+      order: 2;
+      margin: 16px -20px 0;
+      width: calc(100% + 40px) !important;
+    }
+    #precursors-photo-side > div[style*="gradient"] { display: none; }
+    #precursors-btn-zone { display: none; }
+    .precursors-inner {
+      margin-left: 0 !important;
+      padding-left: 0 !important;
+      width: 100% !important;
+      order: 1;
+      display: flex;
+      flex-direction: column;
+    }
+    /* Move label+title+subtitle to top, cards after photo */
+    .precursors-top { order: 1; }
+    .precursors-inner .cards-grid { order: 3; margin-top: 16px; }
     .section-title { font-size: clamp(1.6rem, 5vw, 2.4rem); }
     .card-text, .sign-text, .p-text, .period-desc { font-size: 0.95rem; }
   }
@@ -1311,9 +1357,11 @@
 
   <!-- Right content -->
   <div class="precursors-inner" style="margin-left:48%; padding-left:40px; position:relative; z-index:2;">
+    <div class="precursors-top">
     <div class="section-label reveal">Пологовий Будинок <span class="heart-pulse-el">💗</span> «Лівобережний»</div>
     <h2 class="section-title reveal delay-1">Провісники пологів</h2>
     <p style="color:var(--text-muted); font-size:1.25rem;" class="reveal delay-2 muted-p">За тиждень-два до пологів ваш організм починає готуватися. Зверніть увагу на ці ознаки.</p>
+    </div><!-- /precursors-top -->
     <div class="cards-grid">
       <!-- CARD 1: Опускання дна матки -->
       <div class="card reveal delay-2">
