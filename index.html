@@ -1036,12 +1036,28 @@
     .periods-grid, .principles-grid, .checklist-grid { grid-template-columns: 1fr; }
     .cards-grid { grid-template-columns: 1fr; }
 
-    /* ── NAVBAR ── */
-    nav { padding: 8px 14px; gap: 8px; }
-    .nav-logo { font-size: 0.95rem; gap: 6px; }
-    .nav-logo span { font-size: 1.1rem; }
-    .nav-center { gap: 6px; }
-    .nav-dot { width: 6px; height: 6px; }
+    /* ── NAVBAR: always keep logo left, toggle right ── */
+    nav {
+      padding: 8px 14px;
+      gap: 8px;
+      justify-content: space-between !important;
+      width: 100%;
+      box-sizing: border-box;
+    }
+    .nav-center {
+      flex: 1;
+      justify-content: center;
+      gap: 6px;
+      overflow: hidden;
+    }
+    .nav-logo { flex-shrink: 0; }
+    #theme-toggle { flex-shrink: 0; }
+
+    /* ── УМОВИ block: 2 columns on mobile ── */
+    .umovy-grid {
+      grid-template-columns: 1fr 1fr !important;
+      gap: 8px 12px !important;
+    }
 
     /* ── HERO ── */
     .hero-title { font-size: clamp(2.2rem, 9vw, 3.5rem); }
@@ -1762,7 +1778,7 @@
     <!-- Умови забезпечення нормальних пологів -->
     <div style="margin-top:18px; padding:14px 20px; background:rgba(232,100,138,0.05); border:1px solid rgba(232,100,138,0.15); border-radius:18px; max-width:100%;" class="reveal delay-4">
       <div style="font-size:0.9rem; font-weight:700; letter-spacing:0.16em; text-transform:uppercase; color:var(--pink); margin-bottom:16px;">Умови забезпечення нормальних пологів</div>
-      <div style="display:grid; grid-template-columns:1fr 1fr 1fr; gap:8px 24px;">
+      <div class="umovy-grid" style="display:grid; grid-template-columns:1fr 1fr 1fr; gap:8px 24px;">
         <div style="font-size:1.2rem; color:var(--text-light); line-height:1.5; display:flex; gap:8px;"><span style="color:var(--pink);flex-shrink:0">✦</span>Індивідуальна пологова кімната</div>
         <div style="font-size:1.2rem; color:var(--text-light); line-height:1.5; display:flex; gap:8px;"><span style="color:var(--pink);flex-shrink:0">✦</span>Персональна психологічна підтримка партнером</div>
         <div style="font-size:1.2rem; color:var(--text-light); line-height:1.5; display:flex; gap:8px;"><span style="color:var(--pink);flex-shrink:0">✦</span>Психологічна підтримка медичним персоналом</div>
