@@ -1038,19 +1038,28 @@
 
     /* ── NAVBAR: always keep logo left, toggle right ── */
     nav {
-      padding: 8px 14px;
+      padding: 8px 14px !important;
       gap: 8px;
       justify-content: space-between !important;
       width: 100%;
       box-sizing: border-box;
     }
+    nav.scrolled { padding: 8px 14px !important; }
     .nav-center {
       flex: 1;
+      display: flex;
       justify-content: center;
       gap: 6px;
       overflow: hidden;
+      min-width: 0;
     }
-    .nav-logo { flex-shrink: 0; }
+    .nav-logo {
+      flex-shrink: 0;
+      font-size: 0.95rem;
+      gap: 6px;
+    }
+    .nav-logo span { font-size: 1.1rem; }
+    .nav-dot { width: 6px; height: 6px; }
     #theme-toggle { flex-shrink: 0; }
 
     /* ── УМОВИ block: 2 columns on mobile ── */
@@ -1113,7 +1122,9 @@
       order: 2;
       justify-content: center;
       transform: scale(0.75);
-      margin: -30px auto -20px;
+      transform-origin: top center;
+      margin-top: 20px;
+      margin-bottom: 0;
     }
 
     /* ── PRECURSORS: title+subtitle → photo → cards ── */
