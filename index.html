@@ -29,6 +29,10 @@
     overflow-x: hidden;
   }
 
+
+  /* ─── SCROLL SNAP ─── */
+  /* scroll-snap removed: page jumps are handled by the arrow buttons / keyboard */
+
   /* ─── SCROLLBAR ─── */
   ::-webkit-scrollbar { width: 4px; }
   ::-webkit-scrollbar-track { background: var(--navy-deep); }
@@ -123,7 +127,7 @@
 
   /* ─── SECTIONS ─── */
   section {
-    min-height: 90vh;
+    min-height: 100vh;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -398,14 +402,14 @@
   body.light #hosp-photo-side { background: #ede5f5 !important; border-left-color: rgba(200,60,100,0.15); }
   body.light #hosp-photo-side > div[style*="gradient"] { background: linear-gradient(to right, #fdf6f9, transparent) !important; }
   .hosp-item {
-    font-size: 0.92rem;
+    font-size: 1.05rem;
     color: var(--text-light);
-    line-height: 1.45;
+    line-height: 1.5;
     display: flex;
-    gap: 8px;
+    gap: 10px;
     align-items: flex-start;
-    padding: 7px 10px;
-    border-radius: 8px;
+    padding: 10px 14px;
+    border-radius: 10px;
     background: rgba(255,255,255,0.03);
     border: 1px solid rgba(232,100,138,0.1);
     transition: all 0.3s;
@@ -788,7 +792,7 @@
   }
   .principle-item:hover { background: rgba(232,100,138,0.06); border-color: rgba(232,100,138,0.25); }
   .p-icon { font-size: 1.5rem; flex-shrink: 0; margin-top: 2px; }
-  .p-text { font-size: 1.2rem; color: var(--text-light); line-height: 1.6; }
+  .p-text { font-size: 1.15rem; color: var(--text-light); line-height: 1.55; }
 
   /* ─── SECTION 7: CHECKLIST ─── */
   #checklist {
@@ -1030,6 +1034,12 @@
     border-color: rgba(200,60,100,0.15) !important;
   }
 
+
+  /* ─── YOUTUBE VIDEO BLOCK ─── */
+  #yt-change-zone:hover #yt-change-btn { opacity: 1 !important; }
+  #yt-change-btn:active { transform: scale(0.92); }
+  body.light #yt-change-btn { background: rgba(253,246,249,0.92); border-color: rgba(200,60,100,0.4); }
+
   /* ─── TOUCH / ACTIVE STATES (mobile tap highlight) ─── */
   .card:active,
   .period-card:active,
@@ -1059,6 +1069,118 @@
   body.light .hosp-item:active { background: rgba(200,60,100,0.09) !important; border-color: rgba(200,60,100,0.4) !important; }
   body.light .sign-item:active { border-bottom-color: rgba(200,60,100,0.4) !important; }
   body.light .contact-pill:active { background: rgba(200,60,100,0.15) !important; }
+
+  /* ─── FINAL TYPOGRAPHY & SPACE (desktop, wins over earlier duplicates) ─── */
+  @media (min-width: 901px) {
+    :root { --fs-body: clamp(1rem, min(0.55rem + 0.8vw, 0.3rem + 1.75vh), 1.5rem); }
+
+    .section-label { font-size: calc(var(--fs-body) * 0.72); }
+
+    /* 2. Definition + bigger video */
+    .definition-grid { max-width: 1560px; grid-template-columns: 1fr 1.1fr; gap: 64px; }
+    #yt-wrapper { width: min(100%, 780px) !important; max-width: 100% !important; }
+    #definition .muted-p { font-size: var(--fs-body) !important; }
+    .big-quote { font-size: calc(var(--fs-body) * 1.3); }
+
+    /* 3. Precursors */
+    #precursors .muted-p { font-size: var(--fs-body) !important; }
+    .card-title { font-size: calc(var(--fs-body) * 1.1); }
+    .card-text { font-size: calc(var(--fs-body) * 0.85); line-height: 1.55; }
+
+    /* 4. Signs */
+    .signs-inner { max-width: 1560px; grid-template-columns: 1.1fr 1fr; gap: 56px; }
+    .sign-item { padding: 12px 0; }
+    .sign-number { font-size: calc(var(--fs-body) * 1.7); min-width: 44px; }
+    .sign-text { font-size: var(--fs-body); line-height: 1.5; }
+    #fetus-img-wrap img { width: clamp(300px, min(30vw, 52vh), 520px) !important; }
+
+    /* 5. Hospitalization + 6. Principles: centre vertically, no empty bottom */
+    #hospitalization { align-items: center !important; }
+    #principles { align-items: flex-start !important; justify-content: center !important; }
+    .hosp-item { font-size: calc(var(--fs-body) * 0.9); padding: 10px 14px; }
+
+    /* Periods */
+    .periods-grid { max-width: 1500px; gap: 24px; }
+    .period-title { font-size: calc(var(--fs-body) * 1.3); }
+    .period-desc { font-size: calc(var(--fs-body) * 0.95); }
+    .phase-item { font-size: calc(var(--fs-body) * 0.85); }
+
+    /* Principles — compact, one screen */
+    .principles-inner { width: 70%; max-width: 70%; }
+    #principles .muted-p { max-width: none !important; font-size: calc(var(--fs-body) * 0.95) !important; margin-top: 4px !important; }
+    .principles-grid { gap: 10px; margin-top: 16px; }
+    .principle-item { padding: 10px 12px; gap: 10px; }
+    .p-icon { font-size: calc(var(--fs-body) * 0.95); }
+    .p-text { font-size: calc(var(--fs-body) * 0.76); line-height: 1.45; }
+    .umovy-grid > div { font-size: calc(var(--fs-body) * 0.76) !important; }
+
+    /* Checklist */
+    #checklist .checklist-header .muted-p { font-size: calc(var(--fs-body) * 0.9) !important; max-width: 1100px !important; }
+    #checklist .checklist-header .muted-p + .muted-p { font-size: calc(var(--fs-body) * 0.75) !important; }
+    .checklist-grid { max-width: 1560px; gap: 20px; }
+    .check-block { padding: 18px 20px; }
+    .check-block-title { font-size: calc(var(--fs-body) * 0.85); }
+    .check-item { font-size: calc(var(--fs-body) * 0.85); padding: 5px 0; }
+    .cl-tab { font-size: calc(var(--fs-body) * 0.85); }
+
+    /* Finale */
+    .contact-pill { font-size: calc(var(--fs-body) * 0.9); }
+  }
+
+  @media (min-width: 1100px) {
+    #principles .muted-p { white-space: nowrap; }
+  }
+
+  /* ─── CHECKLIST: fit one screen (desktop) ─── */
+  @media (min-width: 901px) {
+    #checklist { padding-top: 64px; padding-bottom: 20px; justify-content: flex-start; }
+    #checklist .checklist-header { width: 100%; max-width: 1400px; margin-bottom: 10px; }
+    #checklist .checklist-header .section-title { margin-bottom: 6px; }
+    #checklist .checklist-header .muted-p {
+      max-width: 1300px !important; margin: 4px auto 0 !important;
+      font-size: calc(var(--fs-body) * 0.82) !important; line-height: 1.55 !important;
+    }
+    .checklist-tabs { margin-bottom: 14px; align-items: center; }
+    .cl-hint { font-size: calc(var(--fs-body) * 0.72); margin-left: 12px; }
+    .checklist-tab-content { width: 100%; max-width: 1560px; }
+    .checklist-grid {
+      grid-template-columns: minmax(0, 2.1fr) minmax(0, 1.1fr) minmax(0, 0.9fr);
+      align-items: start;
+    }
+    [id$="-mom-list"] { column-count: 2; column-gap: 24px; }
+    [id$="-mom-list"] .check-item { break-inside: avoid; }
+    .check-block { padding: 14px 18px; }
+    .check-block-title { margin-bottom: 8px; }
+    .check-item { font-size: calc(var(--fs-body) * 0.86); padding: max(3px, calc(1.2vh - 6px)) 0; line-height: 1.35; }
+  }
+  @media (max-width: 900px) {
+    .cl-hint { flex-basis: 100%; text-align: center; font-size: 0.8rem; }
+  }
+
+  /* ─── PAGE ARROWS ─── */
+  #page-arrows {
+    position: fixed; right: 14px; top: 50%; transform: translateY(-50%);
+    display: flex; flex-direction: column; gap: 10px; z-index: 950;
+  }
+  #page-arrows button {
+    width: 44px; height: 44px; border-radius: 50%;
+    background: rgba(13,21,38,0.6); color: var(--pink-light);
+    border: 1px solid rgba(232,100,138,0.45);
+    backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px);
+    display: flex; align-items: center; justify-content: center;
+    cursor: pointer; padding: 0;
+    transition: opacity 0.3s, background 0.2s, transform 0.2s;
+  }
+  #page-arrows button:hover { background: rgba(232,100,138,0.28); }
+  #page-arrows button:active { transform: scale(0.92); }
+  #page-arrows button.arrow-hidden { opacity: 0; pointer-events: none; }
+  #page-arrows svg { width: 20px; height: 20px; }
+  body.light #page-arrows button { background: rgba(253,246,249,0.88); color: #c94070; border-color: rgba(200,60,100,0.4); }
+  body.light #page-arrows button:hover { background: rgba(200,60,100,0.15); }
+  @media (max-width: 900px) {
+    #page-arrows { top: auto; bottom: 14px; right: 12px; transform: none; flex-direction: row; gap: 8px; }
+    #page-arrows button { width: 38px; height: 38px; }
+  }
 
   @media (max-width: 900px) {
     /* ── SECTIONS ── */
@@ -1155,8 +1277,7 @@
       display: flex !important;
       order: 2;
       justify-content: center;
-      transform: scale(0.75);
-      transform-origin: top center;
+      transform: none;
       margin-top: 20px;
       margin-bottom: 0;
     }
@@ -1268,91 +1389,41 @@
       </p>
     </div>
     <div class="definition-visual reveal-right">
-      <div class="orbit orbit-1"><div class="orbit-dot"></div></div>
-      <div class="orbit orbit-2"><div class="orbit-dot"></div></div>
-      <svg width="320" height="320" viewBox="0 0 320 320" xmlns="http://www.w3.org/2000/svg">
-        <defs>
-          <radialGradient id="womb-grad" cx="50%" cy="45%" r="52%">
-            <stop offset="0%" stop-color="rgba(244,160,184,0.18)"/>
-            <stop offset="70%" stop-color="rgba(232,100,138,0.10)"/>
-            <stop offset="100%" stop-color="rgba(13,21,38,0.0)"/>
-          </radialGradient>
-          <radialGradient id="fluid-grad" cx="50%" cy="50%" r="50%">
-            <stop offset="0%" stop-color="rgba(100,180,255,0.15)"/>
-            <stop offset="100%" stop-color="rgba(100,180,255,0.04)"/>
-          </radialGradient>
-          <radialGradient id="skin-grad" cx="40%" cy="35%" r="60%">
-            <stop offset="0%" stop-color="#f4c8b0"/>
-            <stop offset="100%" stop-color="#e8a88a"/>
-          </radialGradient>
-          <filter id="soft-glow">
-            <feGaussianBlur stdDeviation="3" result="blur"/>
-            <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
-          </filter>
-        </defs>
-
-        <!-- Outer ambient glow -->
-        <ellipse cx="160" cy="160" rx="148" ry="148" fill="url(#womb-grad)"/>
-
-        <!-- Womb outline -->
-        <g class="womb-body">
-          <!-- Uterus wall -->
-          <path d="M160,40 C220,40 270,80 275,140 C280,190 260,240 220,265 C200,278 180,285 160,285 C140,285 120,278 100,265 C60,240 40,190 45,140 C50,80 100,40 160,40 Z"
-            fill="rgba(232,100,138,0.08)" stroke="rgba(232,100,138,0.35)" stroke-width="1.5"/>
-          <!-- Amniotic fluid (inner) -->
-          <path d="M160,58 C208,58 250,90 254,142 C258,186 240,228 205,250 C190,260 175,266 160,266 C145,266 130,260 115,250 C80,228 62,186 66,142 C70,90 112,58 160,58 Z"
-            fill="url(#fluid-grad)" stroke="rgba(100,180,255,0.2)" stroke-width="1"/>
-        </g>
-
-        <!-- Baby group – floats gently -->
-        <g class="baby-group" transform="translate(160,158)">
-          <!-- Body (curled fetal position) -->
-          <ellipse cx="0" cy="10" rx="32" ry="38" fill="url(#skin-grad)" opacity="0.92"/>
-          <!-- Head -->
-          <circle cx="-8" cy="-28" r="26" fill="url(#skin-grad)" opacity="0.95"/>
-          <!-- Face features -->
-          <ellipse cx="-14" cy="-30" rx="3.5" ry="4" fill="rgba(100,60,40,0.25)"/>
-          <ellipse cx="-3" cy="-30" rx="3.5" ry="4" fill="rgba(100,60,40,0.25)"/>
-          <path d="M-12,-18 Q-8,-14 -4,-18" fill="none" stroke="rgba(100,60,40,0.3)" stroke-width="1.5" stroke-linecap="round"/>
-          <!-- Tiny ear -->
-          <path d="M15,-32 Q21,-28 16,-22" fill="none" stroke="rgba(220,160,130,0.7)" stroke-width="2" stroke-linecap="round"/>
-          <!-- Arm curled -->
-          <path d="M20,0 Q32,-8 28,-22 Q24,-30 18,-28" fill="none" stroke="rgba(220,150,120,0.8)" stroke-width="5" stroke-linecap="round"/>
-          <!-- Leg curled -->
-          <path d="M22,28 Q38,28 36,44 Q34,54 24,52" fill="none" stroke="rgba(220,150,120,0.8)" stroke-width="5" stroke-linecap="round"/>
-          <!-- Other leg -->
-          <path d="M-10,44 Q-4,56 8,54" fill="none" stroke="rgba(220,150,120,0.7)" stroke-width="4.5" stroke-linecap="round"/>
-          <!-- Umbilical cord -->
-          <path class="cord-anim" d="M18,8 Q50,20 54,50 Q58,78 40,88" fill="none" stroke="rgba(232,160,130,0.75)" stroke-width="3" stroke-linecap="round"/>
-          <!-- Little fist detail -->
-          <circle cx="28" cy="-24" r="6" fill="url(#skin-grad)" opacity="0.9"/>
-          <!-- Heartbeat dot on chest -->
-          <circle cx="2" cy="0" fill="rgba(232,100,138,0.9)" class="heart-pulse">
-            <animate attributeName="r" values="4;7;4;6;4" dur="1.5s" repeatCount="indefinite"/>
-            <animate attributeName="opacity" values="0.9;1;0.9;1;0.9" dur="1.5s" repeatCount="indefinite"/>
-          </circle>
-        </g>
-
-        <!-- Soft decorative petals / flowers around outside -->
-        <g opacity="0.35">
-          <circle cx="60" cy="72" r="6" fill="rgba(232,100,138,0.6)"/>
-          <circle cx="56" cy="66" r="4" fill="rgba(244,160,184,0.5)"/>
-          <circle cx="66" cy="65" r="4" fill="rgba(244,160,184,0.5)"/>
-          <circle cx="250" cy="88" r="5" fill="rgba(232,100,138,0.6)"/>
-          <circle cx="246" cy="82" r="3.5" fill="rgba(244,160,184,0.5)"/>
-          <circle cx="255" cy="80" r="3.5" fill="rgba(244,160,184,0.5)"/>
-          <circle cx="72" cy="240" r="4" fill="rgba(232,100,138,0.5)"/>
-          <circle cx="258" cy="230" r="5" fill="rgba(232,100,138,0.5)"/>
-        </g>
-
-        <!-- Tiny sparkles -->
-        <g opacity="0.6">
-          <circle cx="95" cy="90" r="2" fill="rgba(255,255,255,0.7)"/>
-          <circle cx="230" cy="110" r="1.5" fill="rgba(255,255,255,0.6)"/>
-          <circle cx="85" cy="195" r="1.5" fill="rgba(255,255,255,0.5)"/>
-          <circle cx="240" cy="200" r="2" fill="rgba(255,255,255,0.6)"/>
-        </g>
-      </svg>
+      <div id="yt-wrapper" style="position:relative; width:420px; max-width:92vw;">
+        <div id="video-box" style="
+          position:relative; padding-bottom:56.25%; height:0; overflow:hidden;
+          border-radius:20px; background:#0d0f14;
+          box-shadow: 0 8px 40px rgba(232,100,138,0.25), 0 2px 12px rgba(0,0,0,0.4);
+          border: 1px solid rgba(232,100,138,0.2);
+        ">
+          <iframe id="video-iframe"
+            src="https://drive.google.com/file/d/1EiqPzzufCYBZTo3nYmMreSKv41Dje93S/preview"
+            style="position:absolute;top:0;left:0;width:100%;height:100%;border:none;"
+            allow="autoplay; fullscreen; picture-in-picture"
+            allowfullscreen
+            title="Відео">
+          </iframe>
+        </div>
+        <a id="video-open-link" href="https://drive.google.com/file/d/1EiqPzzufCYBZTo3nYmMreSKv41Dje93S/view" target="_blank" rel="noopener"
+           style="display:block;text-align:center;margin-top:10px;font-size:0.9rem;color:var(--pink-light);text-decoration:none;letter-spacing:0.04em;">
+          Відкрити в новій вкладці ↗
+        </a>
+        <!-- Hidden change zone — bottom-right corner -->
+        <div id="yt-change-zone" style="position:absolute; bottom:-8px; right:-8px; width:48px; height:48px; z-index:10;">
+          <button id="yt-change-btn" onclick="changeVideo()" title="Замінити відео" style="
+            width:36px; height:36px; border-radius:50%;
+            background:rgba(13,21,38,0.85); border:1px solid rgba(232,100,138,0.4);
+            display:flex; align-items:center; justify-content:center;
+            cursor:pointer; opacity:0; transition:opacity 0.3s;
+            backdrop-filter:blur(8px);
+          ">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="rgba(232,100,138,0.9)" stroke-width="2" stroke-linecap="round">
+              <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/>
+              <path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/>
+            </svg>
+          </button>
+        </div>
+      </div>
     </div>
   </div>
 </section>
@@ -1695,7 +1766,7 @@
   <div style="width:66%; position:relative; z-index:2; align-self:flex-start;">
     <div class="section-label reveal">Пологовий Будинок <span class="heart-pulse-el">💗</span> «Лівобережний»</div>
     <h2 class="section-title reveal delay-1">При госпіталізації лікар акушер-гінеколог:</h2>
-    <div style="margin-top:12px; display:grid; grid-template-columns:1fr 1fr; gap:7px 16px;">
+    <div style="margin-top:16px; display:grid; grid-template-columns:1fr 1fr; gap:10px 20px;">
       <div class="hosp-item reveal delay-1"><span class="hosp-arrow">→</span>Ретельно вивчає обмінну карту та звертає увагу на дані загального, інфекційного й акушерсько-гінекологічного анамнезу</div>
       <div class="hosp-item reveal delay-2"><span class="hosp-arrow">→</span>З'ясовує скарги роділлі</div>
       <div class="hosp-item reveal delay-3"><span class="hosp-arrow">→</span>Вимірює температуру тіла, пульс, артеріальний тиск, частоту дихання</div>
@@ -1780,7 +1851,7 @@
   <div class="principles-inner">
     <div class="section-label reveal">Пологовий Будинок <span class="heart-pulse-el">💗</span> «Лівобережний»</div>
     <h2 class="section-title reveal delay-1">Принципи ведення нормальних пологів</h2>
-    <p style="color:var(--text-muted); max-width:560px; font-size:0.9rem; margin-top:8px;" class="reveal delay-2 muted-p">Мета — безпека матері та дитини при мінімальному втручанні у природний процес</p>
+    <p style="color:var(--text-muted); font-size:0.9rem; margin-top:8px;" class="reveal delay-2 muted-p">Мета — безпека матері та дитини при мінімальному втручанні у природний процес</p>
     <div class="principles-grid">
       <div class="principle-item reveal delay-1">
         <div class="p-icon">📋</div>
@@ -1845,13 +1916,13 @@
     <p style="color:var(--text-muted);font-size:0.95rem;margin-top:8px;max-width:860px;line-height:1.7;" class="reveal delay-2 muted-p">
       Речі для пологового краще розділити в три невеликі прозорі сумки: в першу складіть речі, що будуть потрібні перед пологами та під час пологів; в другу покладіть речі для маленького щастя; в третю — одяг та речі для виписки. Для партнерських пологів варто потурбуватися про те, щоб в окрему сумку скласти речі та всі необхідні документи в пологовий будинок і для майбутнього тата.
     </p>
-    <p style="color:var(--text-muted);font-size:0.8rem;margin-top:16px;" class="reveal delay-3 muted-p">Натисніть на квадратик, щоб позначити зібрані речі ✓</p>
   </div>
 
   <!-- TABS -->
   <div class="checklist-tabs reveal delay-2">
     <button class="cl-tab active" onclick="switchTab('fiziol')">🤱 Фізіологічні пологи</button>
     <button class="cl-tab" onclick="switchTab('cesar')">🏥 Кесарський розтин</button>
+    <span class="cl-hint muted-p">Натисніть на квадратик, щоб позначити зібрані речі ✓</span>
   </div>
 
   <!-- TAB: ФІЗІОЛОГІЧНІ -->
@@ -1912,6 +1983,15 @@
     <div class="contact-pill">📸 <a href="https://www.instagram.com/pologovyi6/" target="_blank">instagram.com/pologovyi6</a></div>
   </div>
 </section>
+
+<div id="page-arrows" role="navigation" aria-label="Навігація сторінками">
+  <button id="arrow-up" onclick="stepPage(-1)" aria-label="Вгору" class="arrow-hidden">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 15 12 9 18 15"/></svg>
+  </button>
+  <button id="arrow-down" onclick="stepPage(1)" aria-label="Вниз">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+  </button>
+</div>
 
 <script>
 // ─── PROGRESS BAR ───
@@ -2145,6 +2225,96 @@ function switchTab(tab) {
   event.target.classList.add('active');
 }
 
+
+
+// ─── PAGE NAVIGATION (keyboard + arrow buttons) ───
+(function () {
+  const secs = () => Array.from(document.querySelectorAll('section[data-section]'));
+  const upBtn = document.getElementById('arrow-up');
+  const downBtn = document.getElementById('arrow-down');
+  let lock = false;
+  const lockFor = ms => { lock = true; setTimeout(() => { lock = false; }, ms); };
+
+  function currentIdx() {
+    const line = window.innerHeight * 0.4;
+    let idx = 0;
+    secs().forEach((el, i) => { if (el.getBoundingClientRect().top <= line) idx = i; });
+    return idx;
+  }
+
+  window.stepPage = function (dir) {
+    if (lock) return;
+    const s = secs();
+    const i = currentIdx();
+    const r = s[i].getBoundingClientRect();
+    const vh = window.innerHeight;
+    if (dir > 0) {
+      const remaining = r.bottom - vh;
+      if (remaining > 40) { window.scrollBy({ top: Math.min(remaining, vh * 0.85), behavior: 'smooth' }); lockFor(450); return; }
+      if (i < s.length - 1) { s[i + 1].scrollIntoView({ behavior: 'smooth' }); lockFor(700); }
+    } else {
+      if (r.top < -40) { window.scrollBy({ top: -Math.min(-r.top, vh * 0.85), behavior: 'smooth' }); lockFor(450); return; }
+      if (i > 0) { s[i - 1].scrollIntoView({ behavior: 'smooth' }); lockFor(700); }
+    }
+  };
+
+  document.addEventListener('keydown', e => {
+    const t = e.target;
+    if (t && /^(INPUT|TEXTAREA|SELECT)$/.test(t.tagName)) return;
+    if (e.altKey || e.ctrlKey || e.metaKey) return;
+    if (e.key === 'ArrowDown' || e.key === 'PageDown') { e.preventDefault(); window.stepPage(1); }
+    else if (e.key === 'ArrowUp' || e.key === 'PageUp') { e.preventDefault(); window.stepPage(-1); }
+  });
+
+  function updateArrows() {
+    const atTop = window.scrollY < 10;
+    const atEnd = window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 10;
+    if (upBtn) upBtn.classList.toggle('arrow-hidden', atTop);
+    if (downBtn) downBtn.classList.toggle('arrow-hidden', atEnd);
+  }
+  window.addEventListener('scroll', updateArrows, { passive: true });
+  window.addEventListener('resize', updateArrows);
+  updateArrows();
+})();
+
+// ─── VIDEO (Google Drive / YouTube) ───
+const VIDEO_DEFAULT = { t: 'drive', id: '1EiqPzzufCYBZTo3nYmMreSKv41Dje93S' };
+function videoSrc(v) {
+  return v.t === 'drive'
+    ? 'https://drive.google.com/file/d/' + v.id + '/preview'
+    : 'https://www.youtube-nocookie.com/embed/' + v.id + '?rel=0&modestbranding=1&playsinline=1';
+}
+function videoLink(v) {
+  return v.t === 'drive'
+    ? 'https://drive.google.com/file/d/' + v.id + '/view'
+    : 'https://www.youtube.com/watch?v=' + v.id;
+}
+function applyVideo(v) {
+  const iframe = document.getElementById('video-iframe');
+  const link = document.getElementById('video-open-link');
+  if (iframe) iframe.src = videoSrc(v);
+  if (link) link.href = videoLink(v);
+}
+function parseVideoUrl(url) {
+  let m = url.match(/drive\.google\.com\/file\/d\/([a-zA-Z0-9_-]+)/) || url.match(/drive\.google\.com\/(?:open|uc)\?[^#]*id=([a-zA-Z0-9_-]+)/);
+  if (m) return { t: 'drive', id: m[1] };
+  m = url.match(/(?:youtu\.be\/|youtube\.com\/(?:watch\?v=|embed\/|v\/|shorts\/))([a-zA-Z0-9_-]{11})/);
+  if (m) return { t: 'yt', id: m[1] };
+  return null;
+}
+function changeVideo() {
+  const url = prompt('Вставте посилання на відео (Google Drive або YouTube):');
+  if (!url) return;
+  const v = parseVideoUrl(url.trim());
+  if (!v) { alert('Не вдалося розпізнати посилання. Підтримуються Google Drive та YouTube.'); return; }
+  try { localStorage.setItem('video-src', JSON.stringify(v)); } catch(e) {}
+  applyVideo(v);
+}
+(function() {
+  let v = VIDEO_DEFAULT;
+  try { const s = localStorage.getItem('video-src'); if (s) v = JSON.parse(s); } catch(e) {}
+  applyVideo(v);
+})();
 // ─── HIDE SCROLL INDICATOR AFTER HERO ───
 const heroScrollEl = document.querySelector('.hero-scroll');
 window.addEventListener('scroll', () => {
